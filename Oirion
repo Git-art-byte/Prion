@@ -1,0 +1,418 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Hamburger Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+--[[
+Name = <string> - The name of the UI.
+HidePremium = <bool> - Whether or not the user details shows Premium status or not.
+SaveConfig = <bool> - Toggles the config saving in the UI.
+ConfigFolder = <string> - The name of the folder where the configs are saved.
+IntroEnabled = <bool> - Whether or not to show the intro animation.
+IntroText = <string> - Text to show in the intro animation.
+IntroIcon = <string> - URL to the image you want to use in the intro animation.
+Icon = <string> - URL to the image you want displayed on the window.
+CloseCallback = <function> - Function to execute when the window is closed.
+]]
+
+OrionLib:MakeNotification({
+	Name = "Notification",
+	Content = "Successfully Loaded Hamburger Hub",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+--[[
+Title = <string> - The title of the notification.
+Content = <string> - The content of the notification.
+Image = <string> - The icon of the notification.
+Time = <number> - The duration of the notfication.
+]]
+
+local OthersTab = Window:MakeTab({
+	Name = "Others",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+OthersTab : AddTextbox( {
+        Name = "WalkSpeed",
+        Callback = function(a)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = a
+       end
+   
+})
+
+OthersTab : AddTextbox( {
+        Name = "JumpPower",
+        Callback = function(a)
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = a
+       end
+   
+})
+
+OthersTab:AddButton({
+	Name = "Infinite Jump",
+	Callback = function()
+      		local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+end)
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Esp",
+	Callback = function()
+      		loadstring(game:HttpGet(('https://raw.githubusercontent.com/cool83birdcarfly02six/UNIVERSALESPLTX/main/README.md'),true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Invisible",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/UniversalInvis.lua", true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Aimbot",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/RedWirePlatinumTwo/RobloxScripts/main/Aimbot.lua"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Noclip",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Git-art-byte/Tutorial-zjjs/main/Bonjour"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Dex Explorer",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/MariyaFurmanova/Library/main/dex2.0", true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+OthersTab:AddButton({
+	Name = "Join Low Player Server",
+	Callback = function()
+      		local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
+ 
+local _place = game.PlaceId
+local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+function ListServers(cursor)
+   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+   return Http:JSONDecode(Raw)
+end
+ 
+local Server, Next; repeat
+   local Servers = ListServers(Next)
+   Server = Servers.data[1]
+   Next = Servers.nextPageCursor
+until Server
+ 
+TPS:TeleportToPlaceInstance(_place,Server.id,game:GetService('Players').LocalPlayer)
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+local Admin CommandsTab = Window:MakeTab({
+	Name = "Admin Commands",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Admin CommandsTab:AddSection({
+	Name = "Admin Commands"
+})
+
+--[[
+Name = <string> - The name of the section.
+]]
+
+--[[
+Name = <string> - The name of the tab.
+Icon = <string> - The icon of the tab.
+PremiumOnly = <bool> - Makes the tab accessible to Sirus Premium users only.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Infinite Yield",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() 
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Nameless Admin",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source'))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Fate Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Orca Admin",
+	Callback = function()
+      		loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/orca/master/public/snapshot.lua"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "CMD-X Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Brick Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/MariyaFurmanova/Library/main/un_AdminGUI", true))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Reviz Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/A2R7TdJV"))()
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+Admin CommandsTab:AddButton({
+	Name = "Ultimate Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/KMp8Jvsa",true))() ----------- Intro GUI
+loadstring(game:HttpGet("https://pastebin.com/raw/kSseNzac", true))() ----------- Code
+
+local Player = game.Players.LocalPlayer ------------- START OF SCRIPT
+
+Player.Chatted:connect(function(cht)         ----------- CMD SMART
+	if cht:match(":cmd") then 
+		loadstring(game:HttpGet("https://pastebin.com/raw/M3tZZAqa",true))()
+	elseif cht:match(":toolgui") then                                -------------------- TOOL GUI PART / END OF CMD
+		
+	loadstring(game:HttpGet("https://pastebin.com/raw/txadLpTy",true))()
+	
+	elseif cht:match(":savetool") then
+			for _,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if (v:IsA("Tool")) then
+v.Parent = game.Players.LocalPlayer
+end
+			end
+	elseif cht:match(":loadtool") then
+		for _,v in pairs(game.Players.LocalPlayer:GetChildren()) do
+if (v:IsA("Tool")) then
+v.Parent = game.Players.LocalPlayer.Backpack
+end
+		end
+	elseif cht:match(":antiafk") then  --------------------------------- END OF TOOL GUI PART
+		local VirtualUser=game:service'VirtualUser'
+game:service'Players'.LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+		
+					        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "Loaded";
+            Text = "Anti AFK Script";
+			        })
+		
+	elseif cht:match(":blockhead") then
+		game.Players.LocalPlayer.Character.Head.Mesh:destroy()
+	elseif cht:match(":creeper6") then
+		game.Players.LocalPlayer.Character.Head.Mesh:destroy()
+function doo(limb, pos)
+limb:BreakJoints()
+local velocity = Instance.new("RocketPropulsion", limb)
+velocity.CartoonFactor = 0
+velocity.MaxSpeed = 30
+velocity.MaxThrust = 9999
+velocity.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+velocity.Target = game.Players.LocalPlayer.Character.Torso
+velocity.TargetOffset = pos
+velocity:fire()
+local b = Instance.new("BodyGyro", limb)
+end
+while wait() do
+doo(game.Players.LocalPlayer.Character["Left Arm"], Vector3.new(-0.5,-2,-1))
+doo(game.Players.LocalPlayer.Character["Right Arm"], Vector3.new(0.5,-2,-1))
+doo(game.Players.LocalPlayer.Character["Left Leg"], Vector3.new(-0.5,-2,1))
+doo(game.Players.LocalPlayer.Character["Right Leg"], Vector3.new(0.5,-2,1))
+end
+	elseif cht:match(":creeper15") then
+		game.Players.LocalPlayer.Character.Head.Mesh:destroy()
+function doo(limb, pos)
+limb:BreakJoints()
+local velocity = Instance.new("RocketPropulsion", limb)
+velocity.CartoonFactor = 0
+velocity.MaxSpeed = 30
+velocity.MaxThrust = 9999
+velocity.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+velocity.Target = game.Players.LocalPlayer.Character.UpperTorso
+velocity.TargetOffset = pos
+velocity:fire()
+local b = Instance.new("BodyGyro", limb)
+end
+while wait() do
+doo(game.Players.LocalPlayer.Character["LeftUpperArm"], Vector3.new(-0.5,-2,-1))
+doo(game.Players.LocalPlayer.Character["RightUpperArm"], Vector3.new(0.5,-2,-1))
+doo(game.Players.LocalPlayer.Character["LeftUpperLeg"], Vector3.new(-0.5,-2,1))
+doo(game.Players.LocalPlayer.Character["RightUpperLeg"], Vector3.new(0.5,-2,1))
+end
+	elseif cht:match(":shattervest") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/CKbPg9NC", true))()
+	elseif cht:match(":animationgui") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/uUR6pFVv", true))()
+	elseif cht:match(":gabx") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/EntUzD5J", true))();
+	elseif cht:match(":clickdel") then
+		local Plr = game:GetService("Players").LocalPlayer
+local Mouse = Plr:GetMouse()
+
+Mouse.Button1Down:connect(function()
+if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end
+if not Mouse.Target then return end
+Mouse.Target:Destroy()
+end)
+		
+	elseif cht:match(":trollinggui") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/RNWgaqCE", true))()
+	elseif cht:match(":infinitejump") then
+		local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+
+_G.JumpHeight = 50;
+
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+
+UIS.InputBegan:connect(function(UserInput)
+    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        Action(Player.Character.Humanoid, function(self)
+            if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+                Action(self.Parent.HumanoidRootPart, function(self)
+                    self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+                end)
+            end
+        end)
+    end
+end)
+	elseif cht:match(":opfianlity") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/w8HNfSWA", true))();
+	elseif cht:match(":aimbot1") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/2kbyfrn5", true))()
+	elseif cht:match("aimbot2") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/xB92ES44", true))()
+	elseif cht:match("aimbotgui") then
+		loadstring(game:HttpGet("https://pastebin.com/raw/uw2P2fbY", true))()
+		
+	elseif cht:match(":openui") then  -- secret script if you open the pastebin :))
+		
+	end
+end)
+
+------------------------------------------------------------------------------- END OF SCRIPT ------------------------------------------------------------------
+
+
+loadstring(game:HttpGet("https://pastebin.com/raw/F9USVzSK",true))()
+
+			        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "Loaded";
+            Text = "Ultimate Admin Script";
+			        })
+			
+			print("Working Admin Script")
+  	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
